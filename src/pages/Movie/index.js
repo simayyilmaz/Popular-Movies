@@ -1,13 +1,37 @@
 import './style.css';
 import { useLocation } from 'react-router-dom';
+import useFetch from '../../hooks/useFecth';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+
+
+
+
 const Movie = () => {
   const location = useLocation();
   console.log('location', JSON.stringify(location));
-  const { data } = location?.state;
-  console.log('data', data);
+  const { param } = location?.state;
+  console.log('param', param);
+
+const {data, loading, error, errorDetails} = useFetch(`${param?.id}`);
+
+ console.log('data',data);
+ 
+ 
+
+
+
+
+
+
+
   return (
     <div>
-      <p>{data?.title}</p>
+
+       <Header />
+      <p>{param?.title}</p>
+      <Footer />
+      
     </div>
   );
 };

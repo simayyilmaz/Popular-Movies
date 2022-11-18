@@ -6,12 +6,11 @@ import Footer from '../../components/Footer';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import useFetch from '../../hooks/useFecth';
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
 
-  const {data, loading, error, errorDetails} = useFetch("https://api.themoviedb.org/3/movie/popular?api_key="+"7fe2e00520afd0761911e423d577c7db&language=en-US");
-  const navigate = useNavigate();
+  const { data, loading, error, errorDetails} = useFetch("https://api.themoviedb.org/3/movie/popular?api_key="+"7fe2e00520afd0761911e423d577c7db&language=en-US");
 
   // const onClickHandler = useCallback(
   //   (item) => {
@@ -21,11 +20,12 @@ const Home = () => {
   //   [],
   // )
   
-
+  //https://api.themoviedb.org/3/movie/505642?api_key=7fe2e00520afd0761911e423d577c7db&language=en-US
 
 
   const responsive = {
     superLargeDesktop: {
+
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 10
@@ -44,6 +44,7 @@ const Home = () => {
     }
   };
   return (
+
     <div>
      <Header />
      <div className='App-content'>
@@ -69,10 +70,9 @@ const Home = () => {
         return (
           <> 
           <Link to={`/movies/${item.id}`}
-          state={{ data: item }}
+          state={{ param: item }}
           >
             <Card
-              // onClick={onClickHandler(item)}
               key={index}
               id={item.id}
               title={item?.title}
@@ -80,6 +80,7 @@ const Home = () => {
               imagePath={item?.poster_path}
               releaseDate={item?.release_date}
               genreId={item?.genre_ids?.[0]}
+              
             />  
           </Link>
          </>
