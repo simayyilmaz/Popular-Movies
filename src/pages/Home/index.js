@@ -1,16 +1,27 @@
 import './style.css';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import useFetch from '../../hooks/useFecth';
+import { useNavigate, Link } from "react-router-dom";
 
 const Home = () => {
 
   const {data, loading, error, errorDetails} = useFetch("https://api.themoviedb.org/3/movie/popular?api_key="+"7fe2e00520afd0761911e423d577c7db&language=en-US");
+  const navigate = useNavigate();
+
+  // const onClickHandler = useCallback(
+  //   (item) => {
+  //     console.log(' item', item);
+  //     // return  navigate(`/movies/${item.id}`, { param: item });
+  //   },
+  //   [],
+  // )
   
+
 
 
   const responsive = {
@@ -37,7 +48,7 @@ const Home = () => {
      <Header />
      <div className='App-content'>
      {loading && data !== null ? <div>Loading...</div> :
-      <Carousel 
+     <Carousel 
         responsive={responsive}
         rewind={true}
         rewindWithAnimation={false}
@@ -57,14 +68,20 @@ const Home = () => {
       {data && data?.results?.map((item, index) => {
         return (
           <> 
-          <Card
-            key={index}
-            title={item?.title}
-            overview={item?.overview}
-            imagePath={item?.poster_path}
-            releaseDate={item?.release_date}
-            genreId={item?.genre_ids?.[0]}
-          />  
+          <Link to={`/movies/${item.id}`}
+          state={{ data: item }}
+          >
+            <Card
+              // onClick={onClickHandler(item)}
+              key={index}
+              id={item.id}
+              title={item?.title}
+              overview={item?.overview}
+              imagePath={item?.poster_path}
+              releaseDate={item?.release_date}
+              genreId={item?.genre_ids?.[0]}
+            />  
+          </Link>
          </>
         );
       })}
