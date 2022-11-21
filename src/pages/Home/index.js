@@ -38,6 +38,7 @@ const Home = () => {
       breakpoint: { max: 1024, min: 464 },
       items: 3
     },
+    
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1
