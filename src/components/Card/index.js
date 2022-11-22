@@ -8,6 +8,7 @@ const Card = ({title ,id, overview , genre , imagePath , releaseDate ,}) => {
     // const {data, loading, error, errorDetails} = useFetch(`https://api.themoviedb.org/${genreId}/genre/movie/list?api_key=7fe2e00520afd0761911e423d577c7db&language=en-US`);
     // console.log('data', data);
     return (
+      <div className='ana'>
     <div className="bg-light-white dib br3 pa3 ma2 grow bw2 shadow-5 ucontainer"
    
     >
@@ -15,9 +16,10 @@ const Card = ({title ,id, overview , genre , imagePath , releaseDate ,}) => {
       <div>
         <h5 className='main'>{title}</h5><br/>
         <h6 className='description'>{overview}</h6>
-        <p  className= 'type'>{genre}</p><br/>
+        <p  className='type'>{genre}</p><br/>
         <h6 className='date'>{releaseDate}</h6>
       </div>
+    </div>
     </div>
     );
   };

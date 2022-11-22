@@ -21,23 +21,31 @@ const {data, loading, error, errorDetails} = useFetch(`https://api.themoviedb.or
     <div className='container'> 
 
        <Header /> 
+       
        <Link to={"/"}>
+       
        <button class="btn" ><strong>go back</strong></button>
+       
        </Link>
+      
        <div>
+     
       <br/><img className='imagee' src={`https://image.tmdb.org/t/p/w500_and_h282_face/${data?.poster_path}`} alt="movie_details" /><br/>
+      
       </div>
 
       <div className='details'>
+     
       <p className='title'>{data?.original_title}</p><br/>
-      <p className='datee'><strong>Tarih:</strong> {data?.release_date}</p><br/>
-      <p className='time'><strong>Süre:</strong>  {data?.runtime} min</p><br/>
-      <p className='overview'><strong>Açıklama: </strong> {data?.overview}</p><br/>
-      <p className='tagline'><strong>Replik: </strong> {data?.tagline}</p><br/>
-      <p className='language'><strong>Dil: </strong>  {data?.original_language}</p><br/>
-      <p className='country'><strong>Ülke:</strong> production_countries}</p><br/>
-      <p className='vote'><strong>IMDB Reyting:</strong>  {data?.vote_average}</p><br/>
-      <p className='votecount'><strong>Oy Saysı: </strong> {data?.vote_count}</p><br/>
+      <p ><strong>Tarih:</strong> {data?.release_date}</p><br/>
+      <p ><strong>Süre:</strong>  {data?.runtime} min</p><br/>
+      <p ><strong>Açıklama: </strong> {data?.overview}</p><br/>
+      <p ><strong>Replik: </strong> {data?.tagline}</p><br/>
+      <p ><strong>Dil: </strong>  {data?.original_language}</p><br/>
+      <p ><strong>Ülke:</strong> production_countries}</p><br/>
+      <p ><strong>IMDB Reyting:</strong>  {data?.vote_average}</p><br/>
+      <p ><strong>Oy Sayısı: </strong> {data?.vote_count}</p><br/>
+
       </div>
 
       <Footer />
